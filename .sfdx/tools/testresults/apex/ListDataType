@@ -39,4 +39,29 @@ esto da error "outofBounds" y que no puedes poner nada en la posicion 1 si no ex
 
 //SET
 // and unordered collectin of elements ofsame datatype
-Set<Integer> rollNumbers=new Set<Integer>();
+Set<Integer> rollNumbers2=new Set<Integer>{507,508,509};
+System.debug(rollNumbers2);
+
+rollNumbers2.add(510);
+rollNumbers2.add(511);
+rollNumbers2.add(512);
+
+System.debug(rollNumbers2);
+
+//añadir duplicados no está permitido
+
+rollNumbers2.add(510);
+System.debug(rollNumbers2);
+
+//check if set has an item
+System.debug(rollNumbers2.contains(510));
+
+//delete an item
+rollNumbers2.remove(510);
+
+System.debug(rollNumbers2);
+
+System.debug(rollNumbers2.isEmpty());
+
+rollNumbers2.clear();
+System.debug(rollNumbers2.isEmpty());
