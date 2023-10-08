@@ -1,0 +1,31 @@
+System.debug('hi2?');
+String greeting='Hello World';
+System.debug(greeting);
+/*primitivos
+boolean, String, Date, Time,Integer, Datetime,Long,Blob,Decimal,Double,ID
+*/
+//capitalize String
+System.debug('Contains ring?' + str.capitalize('ring'));
+//cotains String
+System.debug('Contains ring?' + str.contains('ring'));
+//upper case String
+System.debug('Contains ring?' + str.toUpperCase('ring'));
+//low case String
+System.debug('Contains ring?' + str.toLowerCase('ring'));
+//string apex class reference
+// https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_string.htm
+
+//split
+System.debug('Split by space: ' + str.split(' '));
+
+//escape caracther in String
+//String team = My team\'s name is  ...
+/*
+\b one baspace character
+\n new line
+\r carriage return
+\t tag
+\\ one backlash character
+\o one ASCII null character
+*/
+String str= 'My team\'s name is \'SDCFA Academy\' ';

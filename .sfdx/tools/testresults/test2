@@ -1,6 +1,0 @@
-System.debug('hi2?');
-String greeting='Hello World';
-System.debug(greeting);
-/*primitivos
-boolean, String, Date, Time,Integer, Datetime,Long,Blob,Decimal,Double,ID
-*/
