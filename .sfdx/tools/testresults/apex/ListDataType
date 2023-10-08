@@ -1,0 +1,42 @@
+List<Integer> rollNumbers= new List<Integer>{13123,31231,41241};
+System.debug(rollNumbers);
+
+rollNumbers.add(8989);
+rollNumbers.add(41241);
+
+System.debug(rollNumbers);
+
+// "new" keyword is used tocreat a instance of a class and ALLOCATE memory
+Integer rollNum = rollNumbers.get(1);
+System.debug(rollNum);
+System.debug(rollNumbers.get(1));
+
+
+
+// add item on index 4
+rollNumbers.add(4,99990);
+System.debug(rollNumbers);
+
+// see the list's siz
+System.debug(rollNumbers.size());
+
+// remove the item on index 3
+rollNumbers.remove(3);
+
+System.debug(rollNumbers.size());
+
+//clear the list
+rollNumbers.clear();
+System.debug(rollNum);
+System.debug(rollNumbers);
+
+//update item on index 1 
+/*rollNumbers.set(1,444444);
+System.debug(rollNumbers);
+
+esto da error "outofBounds" y que no puedes poner nada en la posicion 1 si no existe
+*/
+
+//SET
+// and unordered collectin of elements ofsame datatype
+Set<Integer> rollNumbers=new Set<Integer>();
