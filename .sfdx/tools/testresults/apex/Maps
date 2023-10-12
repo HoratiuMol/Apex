@@ -1,0 +1,19 @@
+Map<Integer,String> class2020=new Map<Integer, String>();
+
+//Integer will be "key"
+//String will be "value"
+
+class2020.put(11008890, 'Manish');
+
+System.debug(class2020);
+
+class2020.put(11008891, 'Harry');
+class2020.put(11008892, 'Rick');
+class2020.put(11008893, 'Bill');
+
+System.debug(class2020);
+
+class2020.put(11008894, 'Bill');
+System.debug(class2020);
+class2020.put(11008890, 'Skywalker');
+System.debug(class2020);
