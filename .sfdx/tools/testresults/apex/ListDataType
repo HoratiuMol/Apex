@@ -65,3 +65,19 @@ System.debug(rollNumbers2.isEmpty());
 
 rollNumbers2.clear();
 System.debug(rollNumbers2.isEmpty());
+
+//post for apex category
+List<String> apexPosts=new List<String>{'Demystifying Apex Collection','datatypes and lists'};
+//post for lightnini category
+List<String> lightningPosts=new List<String>{'Events in aura','Develloping'};
+//map can store collections as its values
+//map to store the categories and postLists
+Map<String,List<String>> allPosts=new Map<String,List<String>>();
+
+//insert apex posts
+allPosts.put('Apex', apexPosts);
+//insert lightninig posts
+allPosts.put('Lighninig', lightningPosts);
+
+//printing all togheter
+System.debug(allPosts);
