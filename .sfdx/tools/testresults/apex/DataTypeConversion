@@ -1,0 +1,15 @@
+Integer mymarks=Integer.valueOf('85');
+//on all primitive data types in apex(Integer, Double, Long, Boolean etc.)
+
+String physicsMarks='65';
+String chemistryMarks='85';
+String mathMarks='95';
+
+String totalS=physicsMarks+mathMarks+chemistryMarks;
+System.debug(totalS);
+
+Integer total=Integer.valueOf(physicsMarks)+Integer.valueOf(chemistryMarks)+Integer.valueOf(mathMarks);
+System.debug(total);
+
+String totalS2=String.valueOf(total);
+System.debug(totalS2);

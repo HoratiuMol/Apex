@@ -14,3 +14,12 @@ System.debug(result);
 
 result=(first!=second);
 System.debug(result);
+
+String greeting='';
+Integer hour=10;
+if(hour<12){
+    greeting='good morning';
+}else{
+    greeting='good afternoon';
+}
+System.debug(greeting);
