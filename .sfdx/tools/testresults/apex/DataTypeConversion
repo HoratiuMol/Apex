@@ -13,3 +13,23 @@ System.debug(total);
 
 String totalS2=String.valueOf(total);
 System.debug(totalS2);
+
+Boolean isItSunny=false;
+Boolean isItRainnning=false;
+Boolean areYouWorking=false;
+
+if(isItRainnning==true){
+    System.debug('Bring your umbrella');
+}else{
+    System.debug('Leave your umbrella');
+}
+
+if(isItSunny==false){
+    System.debug('Dont go to party');
+}else if(isItRainnning==true){
+    System.debug('Dont go to party');
+}else if(areYouWorking==treu){
+    System.debug('Dont go to party')
+}else{
+    System.debug('Its party time');
+}
