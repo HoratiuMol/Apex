@@ -1,0 +1,16 @@
+Boolean first=true;
+Boolean second=false;
+
+Boolean result;
+
+result=first && second;
+System.debug(result);
+
+result=first || second;
+System.debug(result);
+
+result=(first==second);
+System.debug(result);
+
+result=(first!=second);
+System.debug(result);
