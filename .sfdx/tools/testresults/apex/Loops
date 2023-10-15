@@ -36,9 +36,15 @@ for (Integer i=0;i<100;i++){
 for(Integer i=0;i<10;i++){
     if(i==2){
         continue;
+        //salta el dos y pasa al loop for para i=3
     }else if(i==5){
         break;
     }else{
         System.debug(i);
     }
+}
+//List Iteration For Loop
+List<Integer> rollNumbers=new List<Integer>{12,32,43,12,32};
+for(Integer rollNumber : rollNumbers){
+    System.debug('Student RN : ' + rollNumber);
 }
