@@ -1,6 +1,44 @@
 //Do-While Loop
+//checks conditino only after 1st execution of the "do-while"
+//exectues then checks condition
+Integer j=0;
+do{
+    j++;
+}while(j<1);
+
+System.debug(j);
+//while Loop
+//checks for condition before the 1st execute
+//checks condition, then executes
 Integer i=0;
 while(i<1/*condition*/){
     i++;
 }
 System.debug(i);
+//for Loop
+//simplicity, loved by programers
+for(Integer i=0;i<2;i++){
+    System.debug('Loop for number '+i);
+}
+System.debug('For Loop Finished');
+//break Statement
+//stops the loop at the moment
+///break is very good when u try to search for something into a list
+for (Integer i=0;i<100;i++){
+    if(i==3){
+        break;
+    }else{
+    System.debug(i);
+    }
+}
+//CONTINUE statement
+//skips the current iterration
+for(Integer i=0;i<10;i++){
+    if(i==2){
+        continue;
+    }else if(i==5){
+        break;
+    }else{
+        System.debug(i);
+    }
+}
