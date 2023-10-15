@@ -33,3 +33,20 @@ if(isItSunny==false){
 }else{
     System.debug('Its party time');
 }
+
+//SWITCH statement
+String today;
+
+today='wednesday';
+switch on today { //from the 1st to the last
+    when 'monday' {
+        System.debug('monday');
+        
+    }
+    when 'tuesday','wednesday'{
+        System.debug('not monday');
+    }
+    when else{
+        System.debug('else');
+    }
+}
