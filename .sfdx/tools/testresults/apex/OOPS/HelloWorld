@@ -48,8 +48,10 @@ public class HelloWorld{
             when 5{
                 dayString='Friday';
             }
-            when else{
+            when 6{
                 dayString='Saturday';
+            }when else{
+                dayString='Invalid day number';
             }
         }
         return dayString;
