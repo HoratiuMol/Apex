@@ -81,3 +81,6 @@ allPosts.put('Lighninig', lightningPosts);
 
 //printing all togheter
 System.debug(allPosts);
+
+Datetime currentDateTime = Datetime.newInstance(2020,5,28,3,25,0);
+//expression
