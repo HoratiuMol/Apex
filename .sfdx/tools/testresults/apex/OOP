@@ -1,0 +1,20 @@
+class Studen{
+    String name,
+    Integer age;
+    Integer rollNumber;
+    String className;
+
+    void markAttendance(){
+        System.debug('Marking Attendance');
+    }
+
+    coid payFee(){
+        System.debug('Fee paid');
+    }
+}
+//polymorphism->one with many forms (like a switch "on" swith "off")
+// en java-> sobreCarga de métodos
+/*
+void send (String text){}
+void send(Blob singleImage){}
+*/ 
