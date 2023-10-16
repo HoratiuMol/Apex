@@ -13,6 +13,14 @@ public class HelloWorld{
     public void printGreeting(){
         System.debug(greeting);
     }
-
+    public void printGoodMorning(){
+        System.debug(greeting);
+    }
+    public void printGoodAfternoon(){
+        System.debug(greeting);
+    }
+    public void printGoodEvening(){
+        System.debug(greeting);
+    }
 
 }
