@@ -1,0 +1,10 @@
+public class HelloWorld(){
+    String greeting=('Hello Wordl');
+
+    ///methods must have a return, alwais
+    void printGreeting(){
+        System.debug(greeting);
+        //void returns "null"
+    }
+
+}
