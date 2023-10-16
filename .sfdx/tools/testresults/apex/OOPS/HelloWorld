@@ -1,12 +1,18 @@
 public class HelloWorld{
-    String greeting=('Hello Wordl');
+    private String greeting=('Hello Wordl');
+    public String publicGreeting='My public Greetin';
 
     ///methods must have a return, alwais
-   public void printGreeting(){
+    //this makes u get an aerror about modifiers
+   /*global void printPublicGreeting(){
         //if we dont make it publi we won't see it
-        System.debug(greeting);
+        System.debug(publicGreeting);
         //void returns "null"
         //we call this methjod from the devconsole
+    }*/
+    public void printGreeting(){
+        System.debug(greeting);
     }
+
 
 }
