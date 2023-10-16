@@ -1,10 +1,12 @@
-public class HelloWorld(){
+public class HelloWorld{
     String greeting=('Hello Wordl');
 
     ///methods must have a return, alwais
-    void printGreeting(){
+   public void printGreeting(){
+        //if we dont make it publi we won't see it
         System.debug(greeting);
         //void returns "null"
+        //we call this methjod from the devconsole
     }
 
 }
