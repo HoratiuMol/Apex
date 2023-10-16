@@ -22,5 +22,36 @@ public class HelloWorld{
     public void printGoodEvening(){
         System.debug(greeting);
     }
+    public void printMessage(String msg){
+        System.debug(msg);
+    }
 
+    public String getDay(Integer dayNumber){
+        String dayString='';
+
+        switch on daynumber{
+            when 0{
+                dayString='Sunday';
+            }
+            when 1{
+                dayString='Monday';
+            }
+            when 2{
+                dayString='Tuesday';
+            }
+            when 3{
+                dayString='Wednesday';
+            }
+            when 4{
+                dayString='Thursday';
+            }
+            when 5{
+                dayString='Friday';
+            }
+            when else{
+                dayString='Saturday';
+            }
+        }
+        return dayString;
+    }
 }
