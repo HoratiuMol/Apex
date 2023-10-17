@@ -10,4 +10,13 @@ public class Covid19{
         recoveredInArea++;
         recoveredInCountry++;
     }
+
+    public static void printTreated(){
+        System.debug('Recovered in country : ' + recoveredInCountry);
+    }
+    static{
+        //apex naming convection -> not capital sensible
+        //names must make sense
+        //camelCase convencting names
+    }
 }
