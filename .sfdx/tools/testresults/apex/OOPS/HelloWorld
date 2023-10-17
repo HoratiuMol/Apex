@@ -56,4 +56,36 @@ public class HelloWorld{
         }
         return dayString;
     }
+    //Polymorphgic method
+    public String getDay(String dayName){
+        String dayString='';
+
+        switch on daynumber{
+            when 'Sunday'{
+                dayString='Sunday';
+            }
+            when 'Monday'{
+                dayString='Monday';
+            }
+            when 'Tuesday'{
+                dayString='Tuesday';
+            }
+            when 'Wednesday'{
+                dayString='Wednesday';
+            }
+            when 'Thursday'{
+                dayString='Thursday';
+            }
+            when 'Friday'{
+                dayString='Friday';
+            }
+            when 'Saturday'{
+                dayString='Saturday';
+            }when else{
+                dayString='Invalid day Name';
+            }
+        }
+        return dayString;
+
+    }
 }
