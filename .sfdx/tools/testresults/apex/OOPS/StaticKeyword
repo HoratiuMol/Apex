@@ -11,6 +11,16 @@ public class Covid19{
         recoveredInCountry++;
     }
 
+    public Covid19(){
+        System.debug('Constructor called');
+    }
+
+    public Covid19(Integer patientRecovered){
+        this();//this calles the oine without paremeters, it doesn't amtter where it's put
+        this.recoveredInArea=recoveredInArea;
+        recoveredInCountry=patientRecovered;
+    }
+
     public static void printTreated(){
         System.debug('Recovered in country : ' + recoveredInCountry);
     }
