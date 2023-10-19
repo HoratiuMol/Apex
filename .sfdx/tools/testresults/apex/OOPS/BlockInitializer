@@ -1,0 +1,23 @@
+public class Covid19{
+    public Integer recoveredArea=0;
+    public static Integer recoveredCountry=0,
+
+//start of the initializing bloc
+    {
+        recoveredArea=5;
+        recoveredCountry=5;
+    }
+    System.debug(recoveredArea + recoveredCountry);
+    //end of the initializng blck
+    //start of the initializing bloc
+    {
+        recoveredArea=6;
+        recoveredCountry=6;
+    }
+    System.debug(recoveredArea + recoveredCountry);
+    //end of the initializng blck
+    static{
+
+    }
+
+}

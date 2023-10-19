@@ -1,0 +1,28 @@
+public class outerClass{
+    //logically grouping of the classes
+
+    public class innerClass{
+
+    }
+
+    private class Client{
+    public Integer clientName;
+}
+    client(String clientName){
+        //this is a constructor
+        this.clientName=clientName;
+    }
+    private List<Client> customers=new List<Client>();
+
+    public void addNewCustomer(String clientName){
+        Client customer=new Client(clientName);
+
+        //TO DO : add customer
+        customers.add(customer);
+    }
+    public void getCustomers(){
+        for(Client customer:customers){
+            System.debug('Customers name is ' + customer.clientName);
+        }
+    }
+}
