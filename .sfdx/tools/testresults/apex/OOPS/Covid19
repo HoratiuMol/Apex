@@ -16,7 +16,9 @@ public class Covid19{
     }
 
     public Covid19(Integer patientRecovered){
-        this();//this calles the oine without paremeters, it doesn't amtter where it's put
+        this();
+        //must be the first statement in the method
+        //this calles the oine without paremeters, it doesn't amtter where it's put
         this.recoveredInArea=recoveredInArea;
         recoveredInCountry=patientRecovered;
     }
