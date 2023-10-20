@@ -1,0 +1,25 @@
+public class Annotations{
+        //anotationwe must useto cl ocmponness and acceptsmodifiers
+        //"@"Annotation(Modifiers)
+        /*
+        @AuraEnabled
+        @Deprecated
+        @Future
+        @InvocableMethod
+        We can see the class in the salesforce tools (like flows)
+        @InvocableVariable
+        @IsTest
+        @ReadOnly
+        @RemoteAction
+        @TestSetup
+        @TestVisible
+        */
+        @AuraEnabled(cacheable=true)
+        public static string methodName(){
+            try {
+                
+            } catch (Exception e) {
+                throw new AuraHandledException(e.getMessage());
+            }
+        }
+    }
