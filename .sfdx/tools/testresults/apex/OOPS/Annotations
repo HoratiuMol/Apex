@@ -6,13 +6,26 @@ public class Annotations{
         @Deprecated
         @Future
         @InvocableMethod
-        We can see the class in the salesforce tools (like flows)
+        -We can see the class in the salesforce tools (like flows)
         @InvocableVariable
         @IsTest
         @ReadOnly
         @RemoteAction
         @TestSetup
+        -A place on the code wher the tests is set up. We can crete a class as @TestSetup and then call that class
+        for the setup of the othre classes
         @TestVisible
+        -ApexClass visible and usseble on the test classes
+        Testing is critia for long tie component develipment and success
+        At least 75% code covered, but try to 10%
+        */
+        /*
+    Test for :
+        Single Action
+        Bulk Actions
+        Positie behaviour
+        Negative Behaviourt
+        Restricted Users
         */
         @AuraEnabled(cacheable=true)
         public static string methodName(){

@@ -1,0 +1,9 @@
+@isTest
+public class MyClass{
+    @isTest
+    public static void myTest(){
+        //codebloc
+        //static
+        //void->must not return valued
+    }
+}
