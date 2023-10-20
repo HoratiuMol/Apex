@@ -30,4 +30,19 @@ public static Covid19Test{
         System.assert(Covid19.recoveredInCountry == 123,'treatpatinet Failed');
         //this puts 100% in our class
     } 
+    
+        /*
+        now NEGATIVE
+        */ 
+        public static void treatPatientTestNegative(){
+            @isTest
+            //create the instance of the lcass
+            Covid19 jaipur=new Covid19(-10);
+    
+            Integer treated=jaipur.getTreated();
+
+            System.assertEquals(0,treated,'Treated count does not match');
+    
+        }
+
 }
