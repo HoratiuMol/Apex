@@ -1,0 +1,39 @@
+@isTest
+public class FitnessAppClassTest{
+@isTest
+public static void calculateBMITest1(){
+    Decimal weight=60;
+    Decimal heigh=1.2;
+    
+    Decimal result=FitnessAppClass.calculateBMI(weight,heigh);
+    System.assertEquals(41.67,result,'BMI should be 41,67 for 60kg weight and 1.2m height');
+
+    }
+
+    @isTest
+    public static void calculateBMITest2(){
+        Decimal weight=0;
+        Decimal heigh=1.2;
+
+        Decimal result=FitnessAppClass.calculateBMI(weight,heigh);
+    System.assertEquals(0,result,'BMI should be 0 for 0kg weight and 1.2m height');
+    }
+
+    @isTest
+    public static void calculateBMITest3(){
+        Decimal weight=60;
+        Decimal heigh=0;
+
+        Decimal result=FitnessAppClass.calculateBMI(weight,heigh);
+    System.assertEquals(-1,result,'Invalid input');
+    }
+
+    @isTest
+    public static void calculateBMITest3(){
+        Decimal weight=-60;
+        Decimal heigh=1.2;
+
+        Decimal result=FitnessAppClass.calculateBMI(weight,heigh);
+    System.assertEquals(-1,result,'Invalid input');
+    }
+}
