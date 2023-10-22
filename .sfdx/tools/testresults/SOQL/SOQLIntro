@@ -1,0 +1,1 @@
+SELECT Name, phone, website,AnnualRevenue FROM Account
