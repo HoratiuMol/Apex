@@ -1,0 +1,22 @@
+public class AccountController{
+    public static List<Account> insertAccounts(list<Account> accountToInsert){
+        insert accountToInsert;
+        return accountToInsert;
+    }
+    public static List<Account> getAllAccounts(){
+        List<Account> accounts=[SELECT Name, Phone FROM Account];
+
+        //iterate over all accounts and print infor
+        for(Account account.accoutns){
+            System.System.debug('Acocunt Name: ' + account.Name +'\n Account Phone: '+account.Phone);
+        }
+    }
+    public static void List<Account> printAllAccounts(){
+        List<Account> accounts=getAllAccounts;//we call the method that gets the accoutns vi SOQL, so we
+        //don't have to write it again
+        for(Account account.accoutns){
+            System.System.debug('Acocunt Name: ' + account.Name +'\n Account Phone: '+account.Phone);
+        }
+        return accounts;
+    }
+}

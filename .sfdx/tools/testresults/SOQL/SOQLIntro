@@ -1,1 +1,8 @@
+//label vs name, we use name not label
+
 SELECT Name, phone, website,AnnualRevenue FROM Account
+
+//in querry oly field label, nothing else.
+//we can useconditinon by adding the word "where"
+    WHERE Status='Closed'
+//also can be used a combination of conditions

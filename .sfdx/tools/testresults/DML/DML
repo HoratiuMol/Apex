@@ -1,0 +1,8 @@
+/*data manipulation language , for bussines 
+==INSERT OPERATOIN IN DATABASE==
+Add-Creting a record. Row identificatoin is not nevessary
+Update-Modify an existing record. Row identificatoin is neccessary
+Delete-Delete anexiting record. Row identificatoin is neccessary
+UnDelete-Bring back deleted data-Row identificatoin is neccessary
+
+*/
