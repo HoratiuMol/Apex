@@ -17,6 +17,7 @@ public class Covid19{
 
     public Covid19(Integer patientRecovered){
         if(recoveredInArea<0 /*solves if number is less than 0*/){
+            
             this.recoveredInArea=0;
         }else{
         //must be the first statement in the method
