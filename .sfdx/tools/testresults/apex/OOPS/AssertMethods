@@ -1,0 +1,8 @@
+/*this are sued to make sure that thecod works fine
+u define values so the sistems checks if those values are the correct ones for the coed
+*/
+Integer a=0;
+Integer b =0;
+System.assert(a==b,'a not equal to b');
+System.assertNotEquals(a,b),'A i equal to b';
+System.assertEquals(a,b,'A is not queal to b');

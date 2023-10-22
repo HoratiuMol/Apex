@@ -1,6 +1,9 @@
 public static FitnessAppClass{
-    
-public static calculateBMI(Decimal weight, Decimal heigh){
+
+public static Decimal calculateBMI(Decimal weight, Decimal heigh){
+    if(heigh==0){
+        return -1;
+    }
     Decimal result=weight/(heigh*heigh);
     return result;
     }

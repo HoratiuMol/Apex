@@ -6,6 +6,7 @@ public static void calculateBMITest1(){
     Decimal heigh=1.2;
     
     Decimal result=FitnessAppClass.calculateBMI(weight,heigh);
+    result=result.setScale(2); //so doesn't give back a perioc number
     System.assertEquals(41.67,result,'BMI should be 41,67 for 60kg weight and 1.2m height');
 
     }
