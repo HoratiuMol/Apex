@@ -19,4 +19,18 @@ public class AccountController{
         }
         return accounts;
     }
+
+    //UPDATE BELLOW
+    public static void it<Account> updteAcounts(){
+        List<Account> accounts = [SELECT Id/*NO id, No update possible*/,Name, Phone FROM Acount where Name='SFDCFacts'];
+        for(Account acc :  accounts){
+            acc.Id=accounts.id;
+            acc.Name='SFDCFacts Academy';
+        }
+        update accounts;
+        /*alternat eway to update the records
+        Database.update(accounts,true);*/
+
+    }/*UPDATE DONE*/
+
 }

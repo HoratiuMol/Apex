@@ -1,8 +1,37 @@
 /*data manipulation language , for bussines 
 ==INSERT OPERATOIN IN DATABASE==
 Add-Creting a record. Row identificatoin is not nevessary
-Update-Modify an existing record. Row identificatoin is neccessary
-Delete-Delete anexiting record. Row identificatoin is neccessary
-UnDelete-Bring back deleted data-Row identificatoin is neccessary
 
+    Account acc=new Account(Name'hey,Phone'4124');
+    acc.rating='Hot';
+    insert acc;
+
+    List<Account> accounts=new List<Account>();
+        Account acc1=new Account(Name='Acc1');
+        Account acc2=new Account(Name='Acc1');
+        Account acc3=new Account(Name='Acc1');
+    accounts.add(acc1);
+    accounts.add(acc2);
+    accounts.add(acc3);
+    
+    inserts accounts;
+    (so you nisert the is of acocunts and not just one)
+    (if one fails, all inserts fail)
+(anthre method of INSERT)
+    Database.insert(accounts);
+    (with this method wecan avoid the fail by..)
+    Database.insert(accounts, false);
+    (the correct ones will be inseted, the wrong ones will be not)
+
+Update-Modify an existing record. Row identificatoin is neccessary
+Delete-Delete anexiting record. Row identificatoin is neccessary 
+UnDelete-Bring back deleted data-Row identificatoin is neccessary
+=======Database Method=======
+    DataBase.SaveResult[] srList=Database.insert(accList,false);
+control over record processing
+NO EZXCEPTIONis thrown,instead a result array i returned
+=======DML Statements=======
+    insert accList;
+no PARTIAL record processin
+Results in Exception
 */
