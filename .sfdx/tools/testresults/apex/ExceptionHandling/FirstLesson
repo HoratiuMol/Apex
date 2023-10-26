@@ -1,20 +1,50 @@
-public result=10/0;
-System.debug(result);
+try{
+    Double result=10/0;
+    System.debug('Cought an exception'+result);
+}catch(MathException e){
+    System.debug('Caught a math exception');
+}finally{
+    System.debug('finallly called');
+}
 /*
 The exception thrown will be "Mathexception. Divide by 0"
 After an exception is thrown the code won't continue to exceute, that's why we need
 some "Exception Handling"
 */
 
-Account accRec=new Account();
+try{
+    Account accRec=new Account();
 insert accRec;
+}catch(MathException e){
+    System.debug('Caught a math exception');
+}catch(DMLException e){
+    System.debug('Caught a DML exception');
+}finally{
+    System.debug('finallly called');
+}
 /*
 The error is "DMLException". Insert failed.First Exception, REQUIRED_FIELD_MISSING
 Required fields are missing: [Name]
 */
 
-String str;
-System.debug(str.toLowerCase());
+try{
+    String str;
+    System.debug(str.toLowerCase());
+}catch(MathException e){
+    System.debug('Caught a math exception');
+}catch(DMLException e){
+    System.debug('Caught a DML exception');
+}catch(Exception e){//use "EsceptioN" if you don't want to define the exeption or don't know what to expect
+    System.debug('Caught a General Exception');
+   //methods to know the exception
+    System.debug(e.getCause());
+    System.debug(e.getMessage());
+    System.debug(e.getLineNumber());
+    System.debug(e.getStackTraceString());
+    System.debug(e.getTypeName());
+}finally{
+    System.debug('finallly called');
+}
 /*
 EXception "NullPointerExceptioN" Attempt to de-reference a null object
 Famous Exception when you write on SF platform,you must study the origin.

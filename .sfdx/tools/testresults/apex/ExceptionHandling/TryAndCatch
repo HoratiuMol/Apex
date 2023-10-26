@@ -1,0 +1,13 @@
+System.debug('Before Exception');
+try{
+    Integer i=10/0;
+    //throws an exception
+}catch(MathException e){
+    //catch exception here
+    //only executes if the  exception was caught
+}finally{
+    //optional finally bloc
+    //always executes, regardles of any exception was thrown or not. ALWAYS
+}
+
+System.debug('After Exception');
