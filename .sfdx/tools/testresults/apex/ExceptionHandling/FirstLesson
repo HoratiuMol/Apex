@@ -1,0 +1,27 @@
+public result=10/0;
+System.debug(result);
+/*
+The exception thrown will be "Mathexception. Divide by 0"
+After an exception is thrown the code won't continue to exceute, that's why we need
+some "Exception Handling"
+*/
+
+Account accRec=new Account();
+insert accRec;
+/*
+The error is "DMLException". Insert failed.First Exception, REQUIRED_FIELD_MISSING
+Required fields are missing: [Name]
+*/
+
+String str;
+System.debug(str.toLowerCase());
+/*
+EXception "NullPointerExceptioN" Attempt to de-reference a null object
+Famous Exception when you write on SF platform,you must study the origin.
+*/
+/*
+You can use "Throw" so Apex gives you back the erro
+*/
+
+//throw an exception Programmatically
+throw new NullPointerException();
