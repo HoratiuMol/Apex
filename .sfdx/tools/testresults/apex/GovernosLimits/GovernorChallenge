@@ -6,7 +6,7 @@ public class OpportunityController{
             //get opp record
             Opportunity opp=[SELECT Id, Amount, Profile__c from Opportunity WHERE Id=: oppId];
             //gives us the records and their amount
-            if(opp.Amount<10000){
+            if(opp.Amount<10000 && opp.Amount==0){
                 opp.Profile__c='Low';
             }else if(opp.Amount>50000){
                 opp.Profile__c='High';
