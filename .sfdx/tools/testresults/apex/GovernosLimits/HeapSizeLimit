@@ -1,0 +1,29 @@
+/*total heap size limit its between 6MB and 12MB (size of RAM)
+
+https://en.wikipedia.org/wiki/Space_complexity
+The space complexity of an algorithm or a computer program is the amount of memory space required
+ to solve an instance of the computational problem as a function of characteristics of the input. 
+ It is the memory required by an algorithm until it executes completely.
+ [1] This includes the memory space used by its inputs, called input space, and any other (auxiliary) memory it 
+ uses during execution, which is called auxiliary space.
+
+*/
+
+List<Account> accounts=[SELECT id, Type,Name,ParentId from Account];
+List<Account> dupAccounts=accounts;
+
+while(1==1){
+    //endless while loop
+    List<Account> dupAccounts=accounts;
+    accounts.addAll(dupAccounts);
+    //this will hit heap limit size, we are doing a list into a list of a duplicated list
+    //we must use CORRECT data type structure data
+}
+accounts=null; //this will cleear the heap that the list is using,its gonna free the amount of memory that the list was using
+
+
+for(Account acc: [SELECT id, Type,Name,ParentId from Account];){
+    //this will improve the amount of heap use,
+    //because will alwaias pass a single account and not all of them (limited to 200 records)
+    //so u never fetch all the accounts in "one go" 
+}

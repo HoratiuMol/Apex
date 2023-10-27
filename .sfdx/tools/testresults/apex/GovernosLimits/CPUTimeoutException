@@ -3,3 +3,40 @@ while(1==1){
     System.debug('Executing');
 }
 //will never stop
+
+/*(U can get the current limit usage in apex using methods in LIMITs class
+
+getDMLStatement()-return the number of DML statemsn already used
+getHeapSize()-return the aproximate amount of memory that weas used
+
+For getting limtis
+
+getLimitDMLStatement()-return the total number of DML statemsn that can be  used
+getLimitHeapSize()-return the total amount of memory that can be used
+
+SF Guide
+https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_limits.htm
+
+*/
+
+//we will avoid the endless loop
+
+//big SOQL querry
+List<Account> accounts=[SELECT id; Type, Name, Parentid from Account /*just like that, we want them all*/ ];
+
+//endless while loop
+//this loop will hit hep size issue in apex
+//as it doubles the accounts list time each time
+while(1==1){
+    if(Limits.getHeapSize()*2 >= Limits.getLimitHeapSize()){
+        break;
+        //if this is not the cas,e it will duplicate the values
+    
+    }
+    //make copy of account list
+    List<Account> dupAccounts=accounts;
+    //add copy to original list
+    accounts.addAll(dupAccounts);
+}
+System.debug('list size: ' + accounts.size();)
+//ways to improve heap utilization}
