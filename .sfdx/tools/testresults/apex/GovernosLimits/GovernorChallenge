@@ -1,12 +1,20 @@
-public class OpportunityController{
+/public class OpportunityController{
+    //DML Operation LIMIT
 
     public static void updateProfile(List<Id> oppIds){
         //querry the record and check the amount
-        for(Id oppId : oppIds){
+        //and the SOQL u make a "LIST"
+        List<Opportunity> opps=[SELECT Id, Amount, Profile__c from Opportunity WHERE Id /*the key is the "IN", u must add it instead of "=:" */IN: oppId];
+    
+        
+        //don't write SOQL in a for loop because u'll reach SOQL LIMIT
+        for(Opportunity opp : opps){
             //get opp record
-            Opportunity opp=[SELECT Id, Amount, Profile__c from Opportunity WHERE Id=: oppId];
+            
             //gives us the records and their amount
-            if(opp.Amount<10000 && opp.Amount==0){
+            if(opp.Amount==null){
+                opp.Profile__c='';
+            }else if(opp.Amount<10000){
                 opp.Profile__c='Low';
             }else if(opp.Amount>50000){
                 opp.Profile__c='High';
@@ -14,7 +22,17 @@ public class OpportunityController{
                 opp.Profile__c='Medium';
             }
             //we always need to update the opp at the end
+            /*
             update opp;
+            */ 
         }
+        update opps;
+        //the difference is that we update the opps list and not 
+        //just opp so we dont update every item, but we update them all
+        //this wrong hits the 100 SOQL limit
     }
+        //this way we bulkify oyur code
+        //-step 1: SOQL outside the for
+        //-step 2: we make our code
+        //-step 3: we update the "All list" outisde the "for loop" and not item by item
 }

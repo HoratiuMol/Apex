@@ -1,0 +1,5 @@
+//faulty code to test APEX CPU timeout expcetion
+while(1==1){
+    System.debug('Executing');
+}
+//will never stop
