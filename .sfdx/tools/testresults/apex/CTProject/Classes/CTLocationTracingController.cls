@@ -4,5 +4,8 @@
  * @author Manish
  */
 public with sharing class CTLocationTracingController {
+    public CTLocationTracingController(){
+        
+    }
 
 }
