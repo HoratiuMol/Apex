@@ -35,5 +35,14 @@ public with sharing class CTLocationTracingController {
             ORDER BY Visit_Date__c DESC];        
     }
 
+    public static Location_Tracing__c checkDuplicates(List<Location_Tracing__c> locationTraces){
+        List<Location_Tracing__c> locationList=[SELECT Id, Name, Person__c, Location__c, Visit_Date__c, Person__r.Token__c, Person__r.Health_Status__c 
+        FROM Location_Tracing__c
+            WHERE Location__C IN:locationIds 
+            AND Visit_Date__c=LAST_N_DAYS:10
+            AND Person__r.Health_Status__c='Green'
+            ORDER BY Visit_Date__c DESC];  
+
+    }
 
 }
