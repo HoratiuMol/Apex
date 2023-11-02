@@ -55,6 +55,22 @@ public with sharing class CTPersonController {
         return null; //if there is no elemente, we return null
     }
 
+    public static Map<String, Integer> getHealthStatusCount(){
+
+        Map<String, Integer> healthCountMap=new Map<String, Integer>();
+
+        For(AggregateResult ar: [SELECT Id, Name, Health_Status__c,
+                                    COUNT(Id) Health_Status__c
+                                     FROM Person__c
+                                    GROUP BY Health_Status__c]){
+            String healtStatus0String.valueof(ar.get('Health_Status__c'));
+            Integer count=Integer.valueOf(ar.get('total'));                       
+            healthCountMap.put(ar.get('Health_Status__c'),ar.get('total'));
+}
+
+            return healthCountMap;
+    }
+
     
 
 }

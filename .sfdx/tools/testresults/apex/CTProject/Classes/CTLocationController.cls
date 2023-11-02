@@ -31,4 +31,17 @@ public with sharing class CTLocationController {
         }
     }return null;
 
+
+    public static Map<String, Integer> getStatusCount(){
+        Map<String, Integer> statusCountMap=new Map<String, Integer>();
+
+        For(AggregateResult ar: [SELECT Id, Name, Status,
+                                    COUNT(Id) Status
+                                     FROM Location__c
+                                    GROUP BY Health_StatusStatus__c]){
+                                  
+            statusCountMap.put(String.valueof(ar.get('Location__c')),Integer.valueOf(ar.get('total')));
+
+    }
+    return statusCountMap;
 }

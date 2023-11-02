@@ -24,4 +24,16 @@ HAVING Clause
 optional clause to filter results that aggregate functions returns
 SELECT StageName, SUM(Amount) FROM Opportunity GROUP BY StageName HAVING SUM(Amount)>50000
 
+
+AGGREGATE FUNCTION
+the output will not be and object, but a list or an error.
+So we must use the querry like a List Declaration
+
+AggregateResult[] groupedResults= [SELECT AVG(Amount), MAX(Amount) FROM Opportunity];
+Double avgAmount= Double.valueOf(groupedResults[0].get('expr0'));
+Double avgAmount= Double.valueOf(groupedResults[0].get('expr1'));
+
+SOQL FOR LOOPS
+for(AggregateResult result: [SELECT AVG(Amount), MAX(Amount) FROM Opportunity])
+this improves the heap size of the code
 */
