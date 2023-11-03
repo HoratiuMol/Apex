@@ -18,3 +18,31 @@ Following Events:
     }
 
 Trigger are helpfull at automating bussines processes
+Can implemente COMPLEX VALIDATIONS
+Comunicate with 3rd party Systems when data is changed
+                        EXTREMELY FAST
+
+Trigger for this events:
+    before insert
+    after insert
+
+    before update
+    after update
+
+    before Delete
+    after Delete
+
+    after undelete
+
+Throwing errores
+addError() methos on a record or field
+
+Deactivate Trigger
+SetupPage-ObjectManager-ObjetcWhereTheTriggerJumpsIn-ApexTrigger-OpenTHeTrigger-EditTheTrigger-Uncheck "IsActive" checkbox
+
+You can have multiple triggers but you cant control witch one executes first and share the same governos limits in one single actions
+
+Context Varialbe
+
+-isBefore-if the trigger was fired before any record was saved
+-isAfter-if was fired after all recrods were saved
