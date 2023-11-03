@@ -1,0 +1,20 @@
+Database trigger-set of operations that runs when specific actions ocurr in a Database
+defined to run when changes are made to a table's data
+
+Apex Trigger-apex code that runs when specific actions ocurr within a SF object
+defined to run when cahnges are made to an object's records
+
+Following Events:
+    Insert
+    Update
+    Delete
+    merge
+    Upsert
+    Undelete
+
+    trigger myTestTrigger on Lead(before insert, after update){
+        trigger code here
+        you can writ as much lines as u want
+    }
+
+Trigger are helpfull at automating bussines processes
