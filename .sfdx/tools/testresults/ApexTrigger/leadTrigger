@@ -1,11 +1,19 @@
 trigger LeadTrigger on Lead(before insert, before update){
+    System.debug('Trigger size: ' + Trigger.size());
+    System.debug('is Trigger: ' + Trigger.isExecuting());
+    System.debug('Operation Type: ' + Trigger.opeartionType());
    // System.debug('Lead Trigger called');
    for(Lead leadRecord : Trigger.new){
     //if(String.isBlank(leadRecord.LeadSource)){
-        if(Trigger.isBefore){/*this only activates if the trigger is a before*/
+        if(Trigger.isBefore && String.isBlank(leadRecord.LeadSource)){/*this only activates if the trigger is a before*/
         leadRecord.LeadSource='Other';
     }
-    if(String.isBlank(leadRecord.Industry)){
+
+    if((leadRecord.Status=='Closed-Converte'||leadRecord.Status=='Closed-Not Converte') 
+    %% Trigger.oldMap.get(leadRecord.Id).Status=='Open - Not Contacted'){
+        leadRecord.Status.addError('You cannot directly open a closed record');
+    }
+    if(String.isBlank(leadRecord.Industry) && Trigger.isInsert){
         leadRecord.addError('Industry field cannot be blank');
     }
    }

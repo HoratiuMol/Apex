@@ -46,3 +46,14 @@ Context Varialbe
 
 -isBefore-if the trigger was fired before any record was saved
 -isAfter-if was fired after all recrods were saved
+
+Trigger.new == List<SObject>
+Trigger.newMap==Map<Id,SObject>
+
+Trigger.old == List<SObject>
+Trigger.oldMap==Map<Id,SObject>
+
+isExecuting-return true if current context for the Apex code is a trigger
+size-the total number of records in a trigger invocation, both old and new
+operationType-return an enum of the current operation[BEFORE_INSERT,AFTER_INSERT,BEFORE_UPDATE,AFTER_UPDATE,
+BEFORE_DELETE,AFTER_DELETE,AFTER_UNDELETE]
