@@ -57,3 +57,16 @@ isExecuting-return true if current context for the Apex code is a trigger
 size-the total number of records in a trigger invocation, both old and new
 operationType-return an enum of the current operation[BEFORE_INSERT,AFTER_INSERT,BEFORE_UPDATE,AFTER_UPDATE,
 BEFORE_DELETE,AFTER_DELETE,AFTER_UNDELETE]
+
+Before Trigger
+    used to update or validate records values before they are saved to the Database
+    avoid making changes to other records in before trigger
+
+After Trigger
+    records that fire trigger, are read only
+    make changes(create, update, delete) to other records in after triggers
+
+Bulkify trigger Logic
+    all trigger are bulkified by default up to 200 records can enter the trigger at ObjectManager
+50 batches or 50 trigger executions
+all trigger shares SObjects limitiations
