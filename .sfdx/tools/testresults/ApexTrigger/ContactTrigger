@@ -1,6 +1,7 @@
 trigger ContactTrigger on Contact(after insert, after update, after deleted, after undelete){
     //before-creation, after-update
     switch on Trigger.operationType {
+
         when AFTER_INSERT{
             Set<Id> accountIds=new Set<Id>();//code optimization
             for(Contact con : Trigger.new){
@@ -10,21 +11,63 @@ trigger ContactTrigger on Contact(after insert, after update, after deleted, aft
                     String accountId = con.AccountId;
                 }
             }
+
             List<AggregateResult> results=[SELECT Id, Name, AccountId, COUNT(Id) totalContacts 
                     FROM Contact 
                         WHERE Active__c=true 
                         AND AccountId=: accountIds 
                         GROUP BY AccountId
                     ];
+
+            List<Account> accountsToupdate=new List<Account>();
+
              for(AggregateResult result : results){
                 //get account id and number of active contacts
                 String accId=String.valueOf(result.get('AccountId'));
                 integer totalContacts=Integer.valueOf(result.get('totalContacts'));
 
                 Account acc=new Account(Id=accId, Active_Contacts__c=totalContacts);
-                update acc;
+                accountsToupdate.add(acc);
+                
+                //another way to do it 
+                //accountsToupdate.add(Account acc=new Account(Id=accId, Active_Contacts__c=totalContacts));
+                //update acc;
 
             }
+            update accountsToupdate; //so we update the list and not accout by account
         }
+
+        when AFETER_UPDATE{
+            Set<Id> accountIds=new Set<Id>();//code optimization
+            for(Contact con : Trigger.new){
+                //capture the account id only if active checkbox is different
+                if(String.isNotBlank(con.AccountId) && Trigger.oldMap.get(con.Id).Active__c != con.Active__c){
+                    //write automatiion logic
+                    accountIds.add(con.AccountId);
+                }else if(Trigger.oldMap.get(con.Id).AccountId != con.AccountId){
+                    //we need to capture both Account Id, the new and the old one
+                    accountIds.add(con.AccountId);
+                    accountIds.add(Trigger.oldMap.get(con.Id).AccountId);
+                }
+            }
+
+            List<AggregateResult> results=[SELECT Id, Name, AccountId, COUNT(Id) totalContacts 
+                    FROM Contact 
+                        WHERE Active__c= TRUE 
+                        AND AccountId=: accountIds 
+                        GROUP BY AccountId
+                    ]; 
+
+            List<Account> accountsToupdate=new List<Account>();
+
+             for(AggregateResult result : results){
+                //get account id and number of active contacts
+                String accId=String.valueOf(result.get('AccountId'));
+                integer totalContacts=Integer.valueOf(result.get('totalContacts'));
+
+                Account acc=new Account(Id=accId, Active_Contacts__c=totalContacts);
+                accountsToupdate.add(acc);
+        }
+        update accountsToupdate;
     }
 }
