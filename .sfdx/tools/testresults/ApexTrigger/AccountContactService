@@ -9,7 +9,9 @@ public with sharing class AccountContactService{
                         GROUP BY AccountId
                     ]; 
 
-            List<Account> accountsToupdate=new List<Account>();
+            Map<Id,Account> accountsToupdate=new Map<Id,Account>();
+            //when we store this value we use map instead of list, so we can make sure that we 
+            //work with it even if it has no accoutnid
 
              for(AggregateResult result : results){
                 //get account id and number of active contacts
@@ -17,8 +19,16 @@ public with sharing class AccountContactService{
                 integer totalContacts=Integer.valueOf(result.get('totalContacts'));
 
                 Account acc=new Account(Id=accId, Active_Contacts__c=totalContacts);
-                accountsToupdate.add(acc);
+                accountsToupdate.add(accId, acc);
         }
-        update accountsToupdate;
+
+        //update accounts with zeroactive contacts
+        for(Id accId : accountIds){
+            if(accountsToupdate.containsKey(accId)){
+                accountsToupdate.add(accId, new Account(Id=accId, Active_Contacts__c=0));
+            }
+        }
+
+        update accountsToupdate.values();
     }
 }
