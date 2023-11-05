@@ -1,0 +1,68 @@
+public with sharing class ContactTriggerHandler{
+
+    public static void afterInserthandler(List<Contact> newContacts){
+
+         Set<Id> accountIds=new Set<Id>();//code optimization
+            for(Contact con : newContacts){
+                if(String.isNotBlank(con.AccountId)){
+                    //write automatiion logic
+                    accountIds.add(con.AccountId);
+                    String accountId = con.AccountId;
+                }
+            }
+
+            List<AggregateResult> results=[SELECT Id, Name, AccountId, COUNT(Id) totalContacts 
+                    FROM Contact 
+                        WHERE Active__c=true 
+                        AND AccountId=: accountIds 
+                        GROUP BY AccountId
+                    ];
+
+                    AccountContactService.updateActiveContacts(accountIds);
+                    //we pass it to the new class so we dont have duplicated code
+    }
+
+    public static void afterupdateHandler(List<Contact> newContacts, Map<Id, Contact> oldContactsMap){
+
+        Set<Id> accountIds=new Set<Id>();//code optimization
+            for(Contact con : newContacts){
+                //capture the account id only if active checkbox is different
+                if(String.isNotBlank(con.AccountId) && oldContactsMap.get(con.Id).Active__c != con.Active__c){
+                    //write automatiion logic
+                    accountIds.add(con.AccountId);
+                }else if(oldContactsMap.get(con.Id).AccountId != con.AccountId){
+                    //we need to capture both Account Id, the new and the old one
+                    accountIds.add(con.AccountId);
+                    accountIds.add(oldContactsMap.get(con.Id).AccountId);
+                }
+            }
+
+            AccountContactService.updateActiveContacts(accountIds);
+
+    }
+
+    public static void afterDeletehandler(List<Contact> oldContacts){
+        Set<Id> accountsIds=new Set<Id>();
+        for(Contact con : newContacts){
+            if(String.isNotBlank(con.AccountId)){
+                accountIds.add(con.AccountId);
+            }
+        }
+        AccountContactService.updateActiveContacts(accountIds);
+
+    }
+
+    public static void (List<Contact> newContacts){
+
+        Set<Id> accountIds=new Set<Id>();//code optimization
+            for(Contact con : newContacts){
+                if(String.isNotBlank(con.AccountId)){
+                    //write automatiion logic
+                    accountIds.add(con.AccountId);
+                    String accountId = con.AccountId;
+                }
+            }
+            AccountContactService.updateActiveContacts(accountIds);
+
+    }
+}
