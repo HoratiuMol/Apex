@@ -1,4 +1,6 @@
 public class LeadTriggerHandler{
+    public static boolean alreadyExecuted=false;
+
     public static void beforeInsertHandler(List<lead> newRecords){
         for(Lead leadRecord : newRecords){
             if(String.isBlank(leadRecord.LeadSource)){
@@ -22,9 +24,13 @@ public class LeadTriggerHandler{
         }
         insert leadTasks;
 
+        if(LeadTriggerHandler.alreadyExecuted==false){
         lead anotherLead=new Lead(LastName='Test lead Sinlge',Status='Open-Not Contacted');
-        insert anotherLead;//this will throw a DML exception "maximum trigger depth exceeded", we will learn to avoid it
-
+        //insert anotherLead; this will throw a DML exception "maximum trigger depth exceeded", we will learn to avoid it
+        LeadTriggerHandler.alreadyExecuted=true;
+        //this makes that this peace of code will not be called on the next execution, cause we already set it up as "true2
+        insert anotherLead;//but if we put it before , we make sure itwe wont have an error
+        }
     }
 
     public static void beforeUpdateHandler(List<lead> newRecords, Map<Id,Lead> oldRecordsMap){
