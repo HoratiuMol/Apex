@@ -1,42 +1,32 @@
 trigger LeadTrigger on Lead(before insert, before update, after insert, after update){
     switch on Trigger.opeartionType{
         when BEFORE_INSERT{
-            for(Lead leadRecord : Trigger.new){
+            //we call the handler instead of the code commented below
+            LeadTriggerHandler.beforeInsertHandler(Trigger.new);
+           /* for(Lead leadRecord : Trigger.new){
                 //if(String.isBlank(leadRecord.LeadSource)){
-                    if(Trigger.isBefore && String.isBlank(leadRecord.LeadSource)){/*this only activates if the trigger is a before*/
+                    if(Trigger.isBefore && String.isBlank(leadRecord.LeadSource)){/*this only activates if the trigger is a before
                     leadRecord.LeadSource='Other';
                 }
                 //validationrule on industry
                 if(String.isBlank(leadRecord.Industry) && Trigger.isInsert){
                     leadRecord.addError('Industry field cannot be blank');
                 }
-        }
+        }*/
     }
    /* System.debug('Trigger size: ' + Trigger.size());
     System.debug('is Trigger: ' + Trigger.isExecuting());
     System.debug('Operation Type: ' + Trigger.opeartionType());
    // trigger executes when insert is called
    */
-   when BEFORE_UPDATE{
-    for(Lead leadRecord : Trigger.new){
-            if(Trigger.isBefore && String.isBlank(leadRecord.LeadSource)){/*this only activates if the trigger is a before*/
-            leadRecord.LeadSource='Other';
+
+    when AFTER_INSERT{
+        LeadTriggerHandler.afterInsertHandler(Trigger.new);
         }
-        if((leadRecord.Status=='Closed-Converte'||leadRecord.Status=='Closed-Not Converte') 
-    %% Trigger.oldMap.get(leadRecord.Id).Status=='Open - Not Contacted'){
-        leadRecord.Status.addError('You cannot directly open a closed record');
-                }
-            }
-        }
-        when AFTER_INSERT{
-            for(Lead leadRecord : Trigger.new){
-                List<Task> leadTasks=new List<Task>();
-                //creata task, but this for loop will execute 1000 times per record, so whe must store it as a list
-                Task leadTask=new Task(Subject='Follow up on Lead Status',WhoId=leadRecord.Id);
-                //insert leadTask;
-                leadTasks.add(leadTask);
-                //this will not activate the limitations
-            }
+        
+    when BEFORE_UPDATE{
+        LeadTriggerHandler.beforeUpdateHandler(Trigger.new, Trigger.oldMap);
         }
     }
+
 }

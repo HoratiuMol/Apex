@@ -70,3 +70,28 @@ Bulkify trigger Logic
     all trigger are bulkified by default up to 200 records can enter the trigger at ObjectManager
 50 batches or 50 trigger executions
 all trigger shares SObjects limitiations
+
+ORDER OF executions==========================================================================
+    System validation rules
+        Record Triggered flows
+            Before Trigger 
+                Custom Validation rules
+                    Duplicate rules
+                        =Save the record(no commit)=
+                            After triggers 
+                                Asignament rules    
+                                    Auto Response rules 
+                                        Workflows rules 
+                                            Processes and flows 
+                                                Escalation and Entitlement Rules
+                                                    Record Triggered Flows(After save)
+                                                        Roll up Summary
+                                                            Sharing Rule Evqaluation
+                                                                Commit all DML Changes(permanent)
+                                                                    Post Commit operations
+
+END OF EXECUTION==================================================================================
+BE carefull, some of this steps can activate the hole execution again
+
+
+
