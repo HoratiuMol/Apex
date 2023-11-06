@@ -1,4 +1,5 @@
 public with sharing class CTPersonTriggerHandler{
+
     public static void beforeInsert(List<Person__c> newRecords){
         for(Person__c person: Trigger.new){
             //update person status to green
@@ -6,5 +7,16 @@ public with sharing class CTPersonTriggerHandler{
             //generate unique token
             person.Token__c = CTPersonController.getToken(person.Mobile__c);
         }
+    }
+
+    public static void beforeUpdate(List<Person__c> newRecords, Map<Id, Person__c> oldRecordsMap){
+        for(Person__c person: newRecords){
+            //check if status is the same
+            //update the Status_Update_Date__c
+            if( person.Health_Status__c != oldRecordsMap.get(person.id).Health_Status__c){
+                person.Status_Update_Date__c=Date.today();
+            }
+        }
+
     }
 }
