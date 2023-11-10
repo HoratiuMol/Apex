@@ -39,5 +39,15 @@ public with sharing class CTPersonTriggerHandler{
     Set<Id> orangeChange=new Set<Id>();
     Set<Id> yellowStatus=new Set<Id>();
 
+    //lets add cohabitants
+    orangeChange.addAll(CTPersonController.getCohabitants(redStatus));
+    //lets add cohabitants
+    yellowStatus.addAll(CTPersonController.getNeighbours(redStatus));
+    //lets add cohabitants
+    Set<Id> primaryContacts=CTPersonController.getPrimaryContacts(redStatus);
+    orangeChange.addAll(primaryContacts);
+    //lets add cohabitants
+    yellowStatus.addAll(CTPersonController.getSecondaryContacts(redStatus));
+
     }
 }
