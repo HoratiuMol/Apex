@@ -20,8 +20,12 @@ public with sharing class CTPersonTriggerHandler{
     }
 
     public static void afterUpdate(List<Person__c> newRecords, Map<Id, Person__c> oldRecordsMap){
-    Set<Id> statusChange=new Set<Id>();
-    Set<Id> redStatus=new Set<Id>();
+
+        Set<Id> alreadyProcessed=new Set<Id>();
+        alreadyProcessed.addAll(redStatus);
+        //we use this set of ids to know what records where already proccessed
+        Set<Id> statusChange=new Set<Id>();
+        Set<Id> redStatus=new Set<Id>();
 
         for(Person__c person: newRecords){
             //check if status is the same
@@ -40,14 +44,14 @@ public with sharing class CTPersonTriggerHandler{
     Set<Id> yellowStatus=new Set<Id>();
 
     //lets add cohabitants
-    orangeChange.addAll(CTPersonController.getCohabitants(redStatus));
+    orangeChange.addAll(CTPersonController.getCohabitants(redStatus, alreadyProcessed));
     //lets add cohabitants
-    yellowStatus.addAll(CTPersonController.getNeighbours(redStatus));
+    yellowStatus.addAll(CTPersonController.getNeighbours(redStatus, alreadyProcessed));
     //lets add cohabitants
-    Set<Id> primaryContacts=CTPersonController.getPrimaryContacts(redStatus);
+    Set<Id> primaryContacts=CTPersonController.getPrimaryContacts(redStatus, alreadyProcessed);
     orangeChange.addAll(primaryContacts);
     //lets add cohabitants
-    yellowStatus.addAll(CTPersonController.getSecondaryContacts(redStatus));
+    yellowStatus.addAll(CTPersonController.getSecondaryContacts(redStatus, alreadyProcessed));
 
     }
 }
