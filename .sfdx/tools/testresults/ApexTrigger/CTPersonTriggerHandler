@@ -46,10 +46,10 @@ public with sharing class CTPersonTriggerHandler{
     //lets add cohabitants
     orangeChange.addAll(CTPersonController.getCohabitants(redStatus, alreadyProcessed));
     //lets add cohabitants
-    yellowStatus.addAll(CTPersonController.getNeighbours(redStatus, alreadyProcessed));
-    //lets add cohabitants
     Set<Id> primaryContacts=CTPersonController.getPrimaryContacts(redStatus, alreadyProcessed);
     orangeChange.addAll(primaryContacts);
+    //lets add cohabitants
+    yellowStatus.addAll(CTPersonController.getNeighbours(redStatus, alreadyProcessed));
     //lets add cohabitants
     yellowStatus.addAll(CTPersonController.getSecondaryContacts(redStatus, alreadyProcessed));
 
