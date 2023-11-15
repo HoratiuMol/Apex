@@ -63,7 +63,8 @@ public with sharing class CTPersonTriggerHandler{
         personToUpdate.add(new Person__c(Id=pid, Health_Status__c = 'Yellos'));
 }
 
-        update personToUpdate;
-
+for(personToUpdate.size() > 0){
+    update personToUpdate;
+}
     }
 }
