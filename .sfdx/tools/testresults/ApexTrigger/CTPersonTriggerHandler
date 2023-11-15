@@ -40,18 +40,30 @@ public with sharing class CTPersonTriggerHandler{
             }
         }
 
-    Set<Id> orangeChange=new Set<Id>();
+    Set<Id> orangeStatus=new Set<Id>();
     Set<Id> yellowStatus=new Set<Id>();
 
+    List<Person__c> personToUpdate = new List<Person__c>();
+
     //lets add cohabitants
-    orangeChange.addAll(CTPersonController.getCohabitants(redStatus, alreadyProcessed));
+    orangeStauts.addAll(CTPersonController.getCohabitants(redStatus, alreadyProcessed));
     //lets add cohabitants
     Set<Id> primaryContacts=CTPersonController.getPrimaryContacts(redStatus, alreadyProcessed);
-    orangeChange.addAll(primaryContacts);
+    orangeStatus.addAll(primaryContacts);
     //lets add cohabitants
     yellowStatus.addAll(CTPersonController.getNeighbours(redStatus, alreadyProcessed));
     //lets add cohabitants
     yellowStatus.addAll(CTPersonController.getSecondaryContacts(redStatus, alreadyProcessed));
+
+    for( Id pid : orangeStatus){
+            personToUpdate.add(new Person__c(Id=pid, Health_Status__c = 'Orange'));
+    }
+
+    for( Id pid : yellowStatus){
+        personToUpdate.add(new Person__c(Id=pid, Health_Status__c = 'Yellos'));
+}
+
+        update personToUpdate;
 
     }
 }
