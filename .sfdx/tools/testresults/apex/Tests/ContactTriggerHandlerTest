@@ -4,7 +4,7 @@ public with sharing class ContacttriggerHandlerTest{
     public ContactTriggerhandlerTest(){
 
         @isTest
-        public void afterInsertHandlerTest(){
+        public void afterInsertHandlerTest1(){
             List<Account> testAccounts = new List<Account>();
             testAccounts.add(new Account(Name='Test 1'));
             testAccounts.add(new Account(Name='Test 2'));
@@ -27,6 +27,40 @@ public with sharing class ContacttriggerHandlerTest{
             //if we use "0" instead of "null" it will give back errors
 
 
+            List<Contact> allContacts=[SELECT Id FROM Contact];
+            System.assertEquals(5, allContacts.size());
+
+        }
+
+        @isTest
+        public void afterInsertHandlerTest2(){
+            List<Account> testAccounts = new List<Account>();
+            testAccounts.add(new Account(Name='Test 1'));
+            testAccounts.add(new Account(Name='Test 2'));
+
+            insert testAccounts;
+
+            List<Contact> testContacts = new List<Contact>();
+            testContacts.add(new Contact(LastName='Test 1', AccountId=testAccounts[0].Id, Active__c=true));
+            testContacts.add(new Contact(LastName='Test 2', AccountId=testAccounts[0].Id, Active__c=true));
+            testContacts.add(new Contact(LastName='Test 3', AccountId=testAccounts[0].Id));
+            testContacts.add(new Contact(LastName='Test 4', AccountId=testAccounts[0].Id));
+            testContacts.add(new Contact(LastName='Test 5', AccountId=testAccounts[1].Id));
+
+            insert testContacts;
+
+            List<Account> accs=[SELECT Id, Name, Active_Contacts__c FROM Account];
+            System.assertEquals(2, accs.size());
+            for(Account acc : accs){
+                if(acc.Name == 'Test 1'){
+                    System.assetEquals(2,accs.accs[0].Active_Contacts__c);
+            //here we can say "2" because we have the Active__c as true in 2 records
+
+                }if(acc.Name == 'Test 2'){
+                    System.assetEquals(null,accs.accs[0].Active_Contacts__c);
+                }
+            }
+            
             List<Contact> allContacts=[SELECT Id FROM Contact];
             System.assertEquals(5, allContacts.size());
 
