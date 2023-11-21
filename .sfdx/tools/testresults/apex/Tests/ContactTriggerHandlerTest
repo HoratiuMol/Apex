@@ -51,7 +51,7 @@ public with sharing class ContacttriggerHandlerTest{
 
             List<Account> accs=[SELECT Id, Name, Active_Contacts__c FROM Account];
             System.assertEquals(2, accs.size());
-            for(Account acc : accs){
+            for(Account acc : accs){//
                 if(acc.Name == 'Test 1'){
                     System.assetEquals(2,accs.accs[0].Active_Contacts__c);
             //here we can say "2" because we have the Active__c as true in 2 records
