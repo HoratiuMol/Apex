@@ -66,5 +66,13 @@ public with sharing class CTPersonTriggerHandler{
 for(personToUpdate.size() > 0){
     update personToUpdate;
 }
+
+List<Location_Tracing__c> locationTraces= CTLocationTracingController.getLocatoinsByPersonIds(statusChange);
+if(locationTraces != null && locationTraces.size()>0){
+    Set<Id> locationIds= newSet<Id>();
+    for(Location_Tracing__c trace : locationTraces){
+        locationIds.add(trace.Location__C);
+    }
+}
     }
 }
